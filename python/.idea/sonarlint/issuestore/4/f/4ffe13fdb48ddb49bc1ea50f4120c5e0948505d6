@@ -1,0 +1,9 @@
+
+gpython:S1192 "HDefine a constant instead of duplicating this literal 'pca.sav' 3 times.(þÞ·ÿ8×í±Û‹1
+rpython:S1192 "SDefine a constant instead of duplicating this literal 'my_best_model.hdf5' 3 times.(þÞ·ÿ8²ð³Û‹1
+ppython:S116#"MRename this field "doFit" to match the regular expression ^[_a-z][_a-z0-9]*$.(®„±°ùÿÿÿÿ8¸€¬Û‹1
+zpython:S117-"\Rename this local variable "X_dataframe" to match the regular expression ^[_a-z][a-z0-9_]*$.(¸¨áŽ8¸€¬Û‹1
+vpython:S1172"XRename this local variable "X_train" to match the regular expression ^[_a-z][a-z0-9_]*$.(«›Ñ«8¹€¬Û‹1
+tpython:S1172"VRename this local variable "X_val" to match the regular expression ^[_a-z][a-z0-9_]*$.(«›Ñ«8¹€¬Û‹1
+zpython:S117]"\Rename this local variable "X_dataframe" to match the regular expression ^[_a-z][a-z0-9_]*$.(¸¨áŽ8¹€¬Û‹1
+npython:S100j"PRename method "getEtichette" to match the regular expression ^[a-z_][a-z0-9_]*$.(Ú‰“°8¹€¬Û‹1

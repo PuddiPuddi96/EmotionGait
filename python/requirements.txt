@@ -1,9 +1,0 @@
-pandas==2.0.0
-scikit-learn==1.2.2
-numpy==1.23.5
-imblearn==0.0
-xgboost==1.7.5
-keras==2.13.1rc0
-opencv-python==4.7.0.72
-mediapipe==0.10.0
-matplotlib==3.7.1

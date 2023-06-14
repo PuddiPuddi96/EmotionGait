@@ -50,48 +50,63 @@ def extract_feature(data,path_csv):
 
 if __name__ == "__main__":
 
-    if len(sys.argv)==3:
+
+    if  len(sys.argv)<2:
+        print("Errori nei parametri del main")
+        exit()
+
+    if len(sys.argv)==2:
+        print("Predict Emotion")
+        path_video = sys.argv[1]
+        data = {'GaitID': [] }
+    elif len(sys.argv)==3:
+        print("Validation del modello")
         path_video=sys.argv[1]
         path_csv=sys.argv[2]
 
         data = {'GaitID': [],
                 'Etichetta': []
                 }
-        num_frame = 30
-        num_features = 11
-        for j in range(0, num_frame):
-            for i in range(0, num_features):
-                data['F{}_Fr{}'.format(i, j)] = []
 
+    num_frame = 30
+    num_features = 11
+    for j in range(0, num_frame):
+        for i in range(0, num_features):
+            data['F{}_Fr{}'.format(i, j)] = []
+
+    if len(sys.argv)==3:
         print("Genero le lable")
         gen_label(data,path_csv)
 
-        # Estraggo le features
-        print("Estraggo le features")
-        extract_feature(data,path_csv)
+    # Estraggo le features
+    print("Estraggo le features")
+    extract_feature(data,path_csv)
 
-        print("Eseguo la predizione")
-        df = pd.DataFrame(data=data)
-        model=Model()
-        y_pred=model.predict(df)
+    print("Eseguo la predizione")
+    df = pd.DataFrame(data=data)
 
-
-    if len(sys.argv)==2:
-        path_video = sys.argv[1]
-
-        data = {'GaitID': []
-                }
-        num_frame = 30
-        num_features = 11
-        for j in range(0, num_frame):
-            for i in range(0, num_features):
-                data['F{}_Fr{}'.format(i, j)] = []
-
-        # Estraggo le features
-        extract_feature(data,path_csv)
-
-        df = pd.DataFrame(data=data)
-        model = Model()
+    model=Model()
+    if (len(sys.argv)==3):
+        X_dataframe=df.drop(['GaitID','Etichetta'],axis=1)
+        y_dataframe=df['Etichetta']
+        y_pred=model.predict(X_dataframe)
+        print("Accuracy Modello Test: ")
+        print(classification_report(y_dataframe, y_pred, zero_division=0))
+    else:
         y_pred = model.predict(df)
-        print(y_pred)
+
+    for gait,pred in zip(df['GaitID'],y_pred):
+        if pred==0:
+            pred_str='Happy'
+        if pred==1:
+            pred_str='Angry'
+        if pred==2:
+            pred_str='Sad'
+        if pred==3:
+            pred_str='Neutral'
+        print("{} : {}".format(gait,pred_str))
+
+
+
+
 

@@ -1,0 +1,5 @@
+
+Opython:S1172"0Remove the unused function parameter "path_csv".(™û¤Ë8ª»ËÛ‹1
+python:S117"^Rename this local variable "gaitAlignment" to match the regular expression ^[_a-z][a-z0-9_]*$.(ä™çûÿÿÿÿ8­»ËÛ‹1
+|python:S117"^Rename this local variable "gaitExtractor" to match the regular expression ^[_a-z][a-z0-9_]*$.(ö­Ø8¯»ËÛ‹1
+|python:S117"^Rename this local variable "poseExtractor" to match the regular expression ^[_a-z][a-z0-9_]*$.(×¾ôú8°»ËÛ‹1

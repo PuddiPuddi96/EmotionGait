@@ -11,6 +11,7 @@ from sklearn.utils import class_weight
 from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
 
+import tensorflow as tf
 import keras
 from keras.utils import to_categorical
 from keras.models import load_model
@@ -29,9 +30,9 @@ class Model:
         np.random.seed(42)
         python_random.seed(42)
 
-        if os.path.exists('modelFit/pca.sav') and os.path.exists('modelFit/my_best_model.hdf5'):
-            self.pca = pickle.load(open('modelFit/pca.sav', 'rb'))
-            self.clf = keras.models.load_model('modelFit/my_best_model.hdf5')
+        if os.path.exists(os.path.join('modelFit','pca.sav')) and os.path.exists(os.path.join('modelFit','my_best_model.hdf5')):
+            self.pca = pickle.load(open(os.path.join('modelFit','pca.sav'), 'rb'))
+            self.clf = keras.models.load_model(os.path.join('modelFit','my_best_model.hdf5'))
             self.doFit=False
         else:
             self.doFit = True
@@ -41,7 +42,7 @@ class Model:
 
 
     def fit(self):
-        df = pd.read_csv("modelFit/EmotionGait.csv")
+        df = pd.read_csv(os.path.join('modelFit','EmotionGait.csv'))
         X_dataframe = df.drop(['GaitID', 'Etichetta'], axis=1)
         y_dataframe = df['Etichetta']
 
@@ -79,26 +80,22 @@ class Model:
                     callbacks=[callback_a],
                     verbose=0)
 
-        self.clf.load_weights('modelFit/my_best_model.hdf5')
+        self.clf.load_weights(os.path.join('modelFit','my_best_model.hdf5'))
         y_predict =self.clf.predict(X_val)
         predizioni_classe=self.getEtichette(y_predict)
         print("Accuracy Modello Train:{}".format(classification_report(y_val, predizioni_classe, output_dict=True,zero_division=0)['accuracy']))
-        pickle.dump(self.pca, open('modelFit/pca.sav', 'wb'))
+        pickle.dump(self.pca, open(os.path.join('modelFit','pca.sav'), 'wb'))
 
     def predict(self,df):
         if self.doFit:
             print("Eseguo la Fit del modello")
             self.fit()
 
-        X_dataframe= df.drop(['GaitID','Etichetta'], axis=1)
-        y_true=df['Etichetta']
-        X_dataframe = self.pca.transform(X_dataframe)
-        X_dataframe = pd.DataFrame(data=X_dataframe)
+        df = self.pca.transform(df)
+        df = pd.DataFrame(data=df)
 
-        y_predict = self.clf.predict(X_dataframe)
+        y_predict = self.clf.predict(df)
         predizione_classe=self.getEtichette(y_predict)
-        print("Accuracy Modello Test")
-        print(classification_report(y_true, predizione_classe, zero_division=0))
         return predizione_classe
 
 
