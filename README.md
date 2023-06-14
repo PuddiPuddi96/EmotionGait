@@ -11,4 +11,10 @@ L’obiettivo di questo lavoro è quello di capire se sia possibile individuare 
 2. cd python
 3. python main.py [absolute_path_video] [absolute_path_xlsx] | python main.py [absolute_path_video]
 
-Con il comando python main.py [absolute_path_video] [absolute_path_xlsx] eseguo la valdiation del modello in base ai vari gait e alle loro rispettive etichette, mentre con il comando python main.py [absolute_path_video] il modello mi restitusice una probabile emozione associata ai gait
+Con il comando python main.py [absolute_path_video] [absolute_path_xlsx] eseguo la valdiation del modello in base ai vari gait e alle loro rispettive etichette, mentre con il comando python main.py [absolute_path_video] il modello mi restitusice una probabile emozione associata ai gait.
+
+Per eseguire la validation del modello sul nostro test set bisogna eseguire il comando:  python main.py .../EmotionGait2/video/test .../EmotionGait2/sondaggi/responses_test.xlsx
+
+Ese: python main.py /Users/angeloafeltra/Documents/GitHub/EmotionGait2/video/test /Users/angeloafeltra/Documents/GitHub/EmotionGait2/sondaggi/responses_test.xlsx
+
+
