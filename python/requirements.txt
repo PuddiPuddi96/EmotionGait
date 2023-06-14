@@ -15,7 +15,5 @@ tensorboard-data-server==0.7.0
 tensorboard-plugin-wit==1.8.1
 tensorflow==2.13.0rc1
 tensorflow-estimator==2.13.0rc0
-tensorflow-metal==1.0.0
-termcolor==2.2.0
 xgboost==1.7.5
 
