@@ -31,8 +31,8 @@ class Model:
         python_random.seed(42)
 
         if os.path.exists(os.path.join('modelFit','pca.sav')) and os.path.exists(os.path.join('modelFit','my_best_model.hdf5')):
-            self.pca = pickle.load(open(os.path.join('modelFit','pca.sav'), 'rb'))
-            self.clf = keras.models.load_model(os.path.join('modelFit','my_best_model.hdf5'))
+            self.pca = pickle.load(open(os.path.join('modelFit', 'pca.sav'), 'rb'))
+            self.clf = keras.models.load_model(os.path.join('modelFit', 'my_best_model.hdf5'))
             self.doFit=False
         else:
             self.doFit = True
