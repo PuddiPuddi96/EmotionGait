@@ -6,12 +6,11 @@ L’obiettivo di questo lavoro è quello di capire se sia possibile individuare 
 
 ## Comandi per l'esecuzione del modello
 
-1. Spostarsi nella cartella EmotionGait
-1. conda env create -f EmotionWalkEnv.yml
-2. cd python
+1. Spostarsi nella cartella EmotionGait/python
+2. pip install -r requirements.txt
 3. python main.py [absolute_path_video] [absolute_path_xlsx] | python main.py [absolute_path_video]
 
-Con il comando python main.py [absolute_path_video] [absolute_path_xlsx] eseguo la valdiation del modello in base ai vari gait e alle loro rispettive etichette, mentre con il comando python main.py [absolute_path_video] il modello mi restitusice una probabile emozione associata ai gait.
+Con il comando python main.py [absolute_path_video] [absolute_path_xlsx] eseguo la valdiation del modello in base ai vari gait e alle loro rispettive etichette, mentre con il comando python main.py [absolute_path_video] il modello mi restitusice una probabile emozione associata al gait.
 
 Per eseguire la validation del modello sul nostro test set bisogna eseguire il comando:  python main.py .../EmotionGait2/video/test .../EmotionGait2/sondaggi/responses_test.xlsx
 
